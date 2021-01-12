@@ -9,20 +9,17 @@ div {
 }
 
 /* Animations */
-@keyframes heartbeat-card {
+@keyframes heartbeat {
     0% {
         transform: scale(0.95);
-        box-shadow: 4px 4px 8px #000000;
     }
 
     70% {
         transform: scale(1);
-        box-shadow: 6px 6px 12px #000000;
     }
 
     100% {
         transform: scale(0.95);
-        box-shadow: 4px 4px 8px #000000;
     }
 }
 
@@ -87,7 +84,7 @@ div {
 .cards__grid-item {
     text-align: center;
     background-color: #80808052;
-    box-shadow: 2px 2px 4px #000000;
+    box-shadow: 2px 2px 4px #000000, 0.5px 0.5px 4px #000000;
     height: 175px;
     border-radius: 5px;
     transition: all 0.25s ease;
@@ -102,13 +99,14 @@ div {
 }
 
 .cards__grid-item:hover {
+    filter: dropshadow(4px 4px 12px #000000);
     background-color: #6200ea; /* material deep purple - primary */
-    box-shadow: 4px 4px 6px #000000;
+    box-shadow: 4px 4px 6px #000000, 0.5px 0.5px 4px #000000;
     height: 220px;
     color: whitesmoke;
     font-size: larger;
     transform: scale(1);
-    animation: heartbeat-card 1.5s infinite;
+    animation: heartbeat 1.75s infinite;
 }
 
 .cards__grid-item:hover .cards__grid-item_greeting {
