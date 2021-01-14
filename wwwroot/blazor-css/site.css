@@ -1,7 +1,8 @@
-
+/* Debug Purpose Only */
 div {
     outline: dotted;
 }
+/* Debug Purpose Only */
 
 /* Icons */
 #user-circle {
@@ -21,6 +22,12 @@ div {
     100% {
         transform: scale(0.95);
     }
+}
+
+/* Universal Browser Padding Reset */
+* {
+    margin: 0;
+    padding: 0;
 }
 
 .grid-container__page {
@@ -85,6 +92,7 @@ div {
     text-align: center;
     background-color: #80808052;
     box-shadow: 2px 2px 4px #000000, 0.5px 0.5px 4px #000000;
+    cursor: pointer;
     height: 175px;
     border-radius: 5px;
     transition: all 0.25s ease;
@@ -129,4 +137,36 @@ div {
     background-color: rebeccapurple;
     box-shadow: 2px 2px 4px #000000;
     border-radius: 5px;
+}
+
+.car-wizard__grid-container {
+    display: grid;
+    grid-template-areas:
+        "progress-area"
+        "form-area";
+    grid-template-columns: auto;
+    grid-template-rows: 0.5fr auto;
+}
+
+.car-wizard__progress-area {
+    display: flex;
+    grid-area: progress-area;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card-wizard__progress-area__progress-item_active {
+    background: #000000;
+}
+
+.card-wizard__progress-area__progress-item_completed {
+    background: #E1E1E1;
+}
+
+.card-wizard__progress-area__progress-item {
+    background: #FFFFFF;
+}
+
+.car-wizard__form-area {
+    grid-area: form-area;
 }

@@ -6,5 +6,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\font-awesome\" />
+    <Folder Include="Components\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>

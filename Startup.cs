@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LifeManager_BlazorServerUI.ViewModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -26,8 +27,8 @@ namespace LifeManager_BlazorServerUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddServerSideBlazor();
-            //services.AddSingleton<WeatherForecastService>(); Example Only: DELETE
+            _ = services.AddServerSideBlazor();
+            services.AddScoped<ICarWizardViewModel, CarWizardViewModel>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

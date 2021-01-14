@@ -1,0 +1,95 @@
+﻿@page "/car"
+@inject ICarWizardViewModel CarWizardViewModel
+
+<div class="car-wizard__grid-container">
+    <div class="car-wizard__progress-area">
+        <div class="card-wizard__progress-area__progress-item">
+            @foreach (var WizardStep in CarWizardViewModel.WizardSteps)
+            {
+                if (WizardStep.StepNumber == CarWizardViewModel.ActiveStep.StepNumber)
+                {
+                    <div class="card-wizard__progress-area__progress-item_active">
+                        @WizardStep.StepName
+                        @WizardStep.StepNumber
+                    </div>
+                }
+                else if (WizardStep.Completed)
+                {
+                    <div class="card-wizard__progress-area__progress-item_completed">
+                        @WizardStep.StepName
+                        @WizardStep.StepNumber
+                    </div>
+                }
+                else
+                {
+                    <div class="card-wizard__progress-area__progress-item">
+                        @WizardStep.StepName
+                        @WizardStep.StepNumber
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <div class="car-wizard__form-area">
+        <form class="car-wizard_form-area__form">
+            @switch (CarWizardViewModel.ActiveStep.StepNumber)
+            {
+                case 1:
+                    <div>
+                        Form 1
+                    </div>
+                    break;
+                case 2:
+                    <div>
+                        Form 2
+                    </div>
+                    break;
+                case 3:
+                    <div>
+                        Form 3
+                    </div>
+                    break;
+                case 4:
+                    <div>
+                        Form 4
+                    </div>
+                    break;
+                default:
+                    <div>
+                        Error
+                    </div>
+                    break;
+            }
+        </form>
+
+        <div class="car-wizard__form-area__button-group">
+            @if (CarWizardViewModel.ActiveStep.StepNumber == 1)
+            {
+                <div @onclick="CarWizardViewModel.GoToNextStep">
+                    Next
+                </div>
+            }
+            else if (CarWizardViewModel.ActiveStep.StepNumber >= 1
+                && CarWizardViewModel.ActiveStep.StepNumber < CarWizardViewModel.WizardSteps.Count)
+            {
+                <div @onclick="CarWizardViewModel.GoToPreviousStep">
+                    Previous
+                </div>
+                <div @onclick="CarWizardViewModel.GoToNextStep">
+                    Next
+                </div>
+            }
+            else
+            {
+                <div @onclick="CarWizardViewModel.GoToPreviousStep">
+                    Previous
+                </div>
+                <div @onclick="CarWizardViewModel.HandleSubmit">
+                    Submits
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
