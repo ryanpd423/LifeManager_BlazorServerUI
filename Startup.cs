@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using LifeManager_BlazorServerUI.ViewModels;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,7 +21,7 @@ namespace LifeManager_BlazorServerUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            _ = services.AddServerSideBlazor();
+            services.AddServerSideBlazor();
             services.AddScoped<ICarWizardViewModel, CarWizardViewModel>();
         }
 
