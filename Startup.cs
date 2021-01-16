@@ -1,3 +1,4 @@
+using LifeManager_BlazorServerUI.Services;
 using LifeManager_BlazorServerUI.ViewModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,6 +24,7 @@ namespace LifeManager_BlazorServerUI
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<ICarWizardViewModel, CarWizardViewModel>();
+            services.AddScoped<IPropertyService, PropertyService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

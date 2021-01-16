@@ -3,7 +3,6 @@
 
 <div class="car-wizard__grid-container">
     <div class="car-wizard__progress-area">
-        <div class="card-wizard__progress-area__progress-item">
             @foreach (var WizardStep in CarWizardViewModel.WizardSteps)
             {
                 if (WizardStep.StepNumber == CarWizardViewModel.ActiveStep.StepNumber)
@@ -28,7 +27,6 @@
                     </div>
                 }
             }
-        </div>
     </div>
 
     <div class="car-wizard__form-area">
@@ -36,8 +34,19 @@
             @switch (CarWizardViewModel.ActiveStep.StepNumber)
             {
                 case 1:
-                    <div>
-                        Form 1
+                    <div class="car-wizard__car_selection_area">
+                        @* TODO: Make this overflow hidden
+                            with a draggable scroll feature.
+                            Will prob need JSInterop for it.
+                            *@
+                        <div class="car-wizard__car_selection_area__list">
+                            @foreach (var Car in CarWizardViewModel.Cars)
+                            {
+                                <div class="car-wizard__car_selection_area__list__item">
+                                    @Car.Make
+                                </div>
+                            }
+                        </div>
                     </div>
                     break;
                 case 2:

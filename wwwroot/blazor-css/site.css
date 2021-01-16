@@ -145,28 +145,77 @@ div {
         "progress-area"
         "form-area";
     grid-template-columns: auto;
-    grid-template-rows: 0.5fr auto;
+    grid-template-rows: 0.2fr auto;
 }
 
 .car-wizard__progress-area {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 15px;
     grid-area: progress-area;
-    flex-direction: row;
-    justify-content: space-between;
+    margin: 20px;
+    font-size: 25px;
+    text-align: center;
+    font-family: Courier New, Courier, monospace;
+    align-items: center;
 }
 
 .card-wizard__progress-area__progress-item_active {
-    background: #000000;
+    background: #6200EA;
+    border-radius: 3px;
+    animation: heartbeat 2s infinite;
+    font-weight: 600;
+    color: #FFFFFF;
+    padding: 20px;
+    box-shadow: 4px 4px 6px #000000, -0.5px -0.5px 2px #757575;
 }
 
 .card-wizard__progress-area__progress-item_completed {
     background: #E1E1E1;
+    border-radius: 3px;
+    box-shadow: 2px 2px 4px #000000, -0.5px -0.5px 2px #757575;
 }
 
 .card-wizard__progress-area__progress-item {
     background: #FFFFFF;
+    border-radius: 3px;
+    box-shadow: 2px 2px 4px #000000, -0.5px -0.5px 2px #757575;
 }
 
 .car-wizard__form-area {
     grid-area: form-area;
+    background: #D8D5D5;
+    margin: auto;
+}
+
+.car-wizard_form-area__form {
+    background: #FFFFFF;
+    font-family: Courier New, Courier, monospace;
+    margin: 35px;
+}
+
+.car-wizard__car_selection_area {
+    background: #6300EA;
+    color: #FFFFFF;
+}
+
+.car-wizard__car_selection_area__list__item {
+    width: 250px;
+    margin: 35px;
+    background: #757575;
+    border-radius: 3px;
+    box-shadow: 2px 2px 4px #000000, -0.5px -0.5px 2px #757575;
+    text-align: center;
+    align-items: center;
+    font-size: 45px;
+}
+
+.car-wizard__form-area__button-group {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    margin: 35px;
+    font-size: 35px;
+    background: #D8D5D5;
+    padding: 20px;
 }
