@@ -3,30 +3,27 @@
 
 <div class="car-wizard__grid-container">
     <div class="car-wizard__progress-area">
-            @foreach (var WizardStep in CarWizardViewModel.WizardSteps)
+        @foreach (var WizardStep in CarWizardViewModel.WizardSteps)
+        {
+            if (WizardStep.StepNumber == CarWizardViewModel.ActiveStep.StepNumber)
             {
-                if (WizardStep.StepNumber == CarWizardViewModel.ActiveStep.StepNumber)
-                {
-                    <div class="card-wizard__progress-area__progress-item_active">
-                        @WizardStep.StepName
-                        @WizardStep.StepNumber
-                    </div>
-                }
-                else if (WizardStep.Completed)
-                {
-                    <div class="card-wizard__progress-area__progress-item_completed">
-                        @WizardStep.StepName
-                        @WizardStep.StepNumber
-                    </div>
-                }
-                else
-                {
-                    <div class="card-wizard__progress-area__progress-item">
-                        @WizardStep.StepName
-                        @WizardStep.StepNumber
-                    </div>
-                }
+                <div class="card-wizard__progress-area__progress-item_active">
+                    @WizardStep.StepName
+                </div>
             }
+            else if (WizardStep.Completed)
+            {
+                <div class="card-wizard__progress-area__progress-item_completed">
+                    @WizardStep.StepName
+                </div>
+            }
+            else
+            {
+                <div class="card-wizard__progress-area__progress-item">
+                    @WizardStep.StepName
+                </div>
+            }
+        }
     </div>
 
     <div class="car-wizard__form-area">
@@ -38,11 +35,12 @@
                         @* TODO: Make this overflow hidden
                             with a draggable scroll feature.
                             Will prob need JSInterop for it.
-                            *@
+                        *@
                         <div class="car-wizard__car_selection_area__list">
                             @foreach (var Car in CarWizardViewModel.Cars)
                             {
-                                <div class="car-wizard__car_selection_area__list__item">
+                                <div class="car-wizard__car_selection_area__list__item"
+                                     @onclick="(e => CarWizardViewModel.HandleVehicleSelect(Car))">
                                     @Car.Make
                                 </div>
                             }
@@ -71,34 +69,33 @@
                     break;
             }
         </form>
-
-        <div class="car-wizard__form-area__button-group">
-            @if (CarWizardViewModel.ActiveStep.StepNumber == 1)
-            {
-                <div @onclick="CarWizardViewModel.GoToNextStep">
-                    Next
-                </div>
-            }
-            else if (CarWizardViewModel.ActiveStep.StepNumber >= 1
-                && CarWizardViewModel.ActiveStep.StepNumber < CarWizardViewModel.WizardSteps.Count)
-            {
-                <div @onclick="CarWizardViewModel.GoToPreviousStep">
-                    Previous
-                </div>
-                <div @onclick="CarWizardViewModel.GoToNextStep">
-                    Next
-                </div>
-            }
-            else
-            {
-                <div @onclick="CarWizardViewModel.GoToPreviousStep">
-                    Previous
-                </div>
-                <div @onclick="CarWizardViewModel.HandleSubmit">
-                    Submits
-                </div>
-            }
-        </div>
+    </div>
+    <div class="car-wizard__form-area__button-group">
+        @if (CarWizardViewModel.ActiveStep.StepNumber == 1)
+        {
+            <div class="wizard-next-button" @onclick="CarWizardViewModel.GoToNextStep">
+                Next
+            </div>
+        }
+        else if (CarWizardViewModel.ActiveStep.StepNumber >= 1
+            && CarWizardViewModel.ActiveStep.StepNumber < CarWizardViewModel.WizardSteps.Count)
+        {
+            <div class="wizard-prev-button" @onclick="CarWizardViewModel.GoToPreviousStep">
+                Previous
+            </div>
+            <div class="wizard-next-button" @onclick="CarWizardViewModel.GoToNextStep">
+                Next
+            </div>
+        }
+        else
+        {
+            <div class="wizard-prev-button" @onclick="CarWizardViewModel.GoToPreviousStep">
+                Previous
+            </div>
+            <div class="wizard-submit-button" @onclick="CarWizardViewModel.HandleSubmit">
+                Submit
+            </div>
+        }
     </div>
 </div>
 

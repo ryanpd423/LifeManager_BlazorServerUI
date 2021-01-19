@@ -1,7 +1,7 @@
 /* Debug Purpose Only */
-div {
+/*div {
     outline: dotted;
-}
+}*/
 /* Debug Purpose Only */
 
 /* Icons */
@@ -184,8 +184,9 @@ div {
 
 .car-wizard__form-area {
     grid-area: form-area;
-    background: #D8D5D5;
+    background: #6300EA;
     margin: auto;
+    padding: 20px;
 }
 
 .car-wizard_form-area__form {
@@ -210,12 +211,87 @@ div {
     font-size: 45px;
 }
 
+
+.car-wizard__car_selection_area__list__item:hover {
+    background: #A3A3A3;
+    box-shadow: 4px 4px 6px #000000, -0.5px -0.5px 2px #757575;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.car-wizard__car_selection_area__list__item:active {
+    background: #A3A3A3;
+    transform: scale(0.85);
+    cursor: grabbing;
+}
+
 .car-wizard__form-area__button-group {
     display: flex;
     flex-wrap: nowrap;
+    font-family: Courier New, Courier, monospace;
+    background: #FFFFFF;
     flex-direction: row;
-    margin: 35px;
     font-size: 35px;
-    background: #D8D5D5;
     padding: 20px;
+    margin: auto;
+}
+
+.wizard-prev-button {
+    background: #080808;
+    color: #FFFFFF;
+    box-shadow: 2px 2px 4px #000000, -0.5px -0.5px 2px #757575;
+    border-radius: 4px;
+    padding: 20px;
+    margin-right: 20px;
+}
+
+.wizard-next-button {
+    background: #080808;
+    color: #FFFFFF;
+    box-shadow: 2px 2px 4px #000000, -0.5px -0.5px 2px #757575;
+    border-radius: 4px;
+    padding: 20px;
+    margin-left: 20px;
+}
+
+.wizard-submit-button {
+    background: #080808;
+    color: #FFFFFF;
+    box-shadow: 2px 2px 4px #000000, -0.5px -0.5px 2px #757575;
+    border-radius: 4px;
+    padding: 20px;
+    margin-left: 20px;
+}
+
+.wizard-prev-button:hover {
+    background: #585858;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.wizard-next-button:hover {
+    background: #585858;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.wizard-submit-button:hover {
+    background: #585858;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.wizard-prev-button:active {
+    transform: scale(0.85);
+    cursor: grabbing;
+}
+
+.wizard-next-button:active {
+    transform: scale(0.85);
+    cursor: grabbing;
+}
+
+.wizard-submit-button:active {
+    transform: scale(0.85);
+    cursor: grabbing;
 }
