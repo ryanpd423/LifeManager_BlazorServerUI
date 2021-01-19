@@ -266,32 +266,32 @@
 .wizard-prev-button:hover {
     background: #585858;
     cursor: pointer;
-    transform: scale(1.2);
+    transform: scale(1.05);
 }
 
 .wizard-next-button:hover {
     background: #585858;
     cursor: pointer;
-    transform: scale(1.2);
+    transform: scale(1.05);
 }
 
 .wizard-submit-button:hover {
     background: #585858;
     cursor: pointer;
-    transform: scale(1.2);
+    transform: scale(1.05);
 }
 
 .wizard-prev-button:active {
-    transform: scale(0.85);
+    transform: scale(0.90);
     cursor: grabbing;
 }
 
 .wizard-next-button:active {
-    transform: scale(0.85);
+    transform: scale(0.90);
     cursor: grabbing;
 }
 
 .wizard-submit-button:active {
-    transform: scale(0.85);
+    transform: scale(0.90);
     cursor: grabbing;
 }
