@@ -31,6 +31,17 @@ namespace LifeManager_BlazorServerUI_xUnit__bUnit
             // Assert
             Assert.Equal(4, result.Count());
         }
+
+        [Fact]
+        public void it_should_update_the_ActiveWizardStep_when_the_next_btn_is_clicked()
+        {
+            // Act
+            var page = _carWizardComponentFixture.bUnitTestContext
+                .RenderComponent<CarWizardComponent>();
+            page.Find(".wizard-next-button").Click();
+
+            // Assert
+        }
     }
 
     public class CarWizardComponentFixture : TestContext

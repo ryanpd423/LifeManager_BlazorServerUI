@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.808.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeManager_BlazorServerUI", "LifeManager_BlazorServerUI.csproj", "{A8CE071A-B654-4626-8950-5D29EC55C9E4}"
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "LifeManager_BlazorServerUI_xUnit__bUnit", "LifeManager_BlazorServerUI_xUnit__bUnit\LifeManager_BlazorServerUI_xUnit__bUnit.csproj", "{90F126A5-D129-44EE-AB91-CFCDBC441382}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeManager_BlazorServerUI_xUnit__bUnit", "LifeManager_BlazorServerUI_xUnit__bUnit\LifeManager_BlazorServerUI_xUnit__bUnit.csproj", "{90F126A5-D129-44EE-AB91-CFCDBC441382}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeManager_PersonalProperty_Service", "LifeManager_PersonalProperty_Service\LifeManager_PersonalProperty_Service.csproj", "{D3319897-CECA-46D3-BE39-6BD9DCA9C234}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{90F126A5-D129-44EE-AB91-CFCDBC441382}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90F126A5-D129-44EE-AB91-CFCDBC441382}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90F126A5-D129-44EE-AB91-CFCDBC441382}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3319897-CECA-46D3-BE39-6BD9DCA9C234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3319897-CECA-46D3-BE39-6BD9DCA9C234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3319897-CECA-46D3-BE39-6BD9DCA9C234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3319897-CECA-46D3-BE39-6BD9DCA9C234}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
