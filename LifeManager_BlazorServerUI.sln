@@ -5,6 +5,13 @@ VisualStudioVersion = 16.0.808.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeManager_BlazorServerUI", "LifeManager_BlazorServerUI.csproj", "{A8CE071A-B654-4626-8950-5D29EC55C9E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComponentUI_Tests", "ComponentUI_Tests\ComponentUI_Tests.csproj", "{86E35B21-08BF-4033-9298-2C6480B14D7D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{63317F3A-11B6-4E09-98AD-4BE005912C2B}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +30,10 @@ Global
 		{578AEA78-E96A-4E3C-8018-4D04A8CC04C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{578AEA78-E96A-4E3C-8018-4D04A8CC04C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{578AEA78-E96A-4E3C-8018-4D04A8CC04C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86E35B21-08BF-4033-9298-2C6480B14D7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86E35B21-08BF-4033-9298-2C6480B14D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86E35B21-08BF-4033-9298-2C6480B14D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86E35B21-08BF-4033-9298-2C6480B14D7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

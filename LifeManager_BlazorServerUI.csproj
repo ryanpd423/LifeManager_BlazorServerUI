@@ -19,4 +19,8 @@
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="ComponentUI_Tests\obj\ComponentUI_Tests.csproj.nuget.dgspec.json" />
+    <Content Remove="ComponentUI_Tests\obj\project.assets.json" />
+  </ItemGroup>
 </Project>
