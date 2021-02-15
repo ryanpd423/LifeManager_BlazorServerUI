@@ -11,6 +11,8 @@ One of the most common suggested fixes did not work for me, which was just to ad
 
 Here's the link to the fix: https://stackoverflow.com/questions/47896241/visual-studio-mac-output-obj-bin-folder-elsewhere-not-supported
 
+https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2019
+
 1) You have to create a `Directory.Build.props` file at the Solution level
 
 2) Enter the following code (remove the `<configuration>` tags)
