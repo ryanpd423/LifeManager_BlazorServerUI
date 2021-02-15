@@ -1,6 +1,6 @@
 # LifeManager
 
-### Bug Related to Multiple Projects within Solution
+### Bug Related to Multiple Projects within Solution (seems specific to Visual Studio for Mac)
 - When you have multiple projects in a single solution, for whatever reason .NET for Mac creates sub-folders for those projects one directory below the level of the main project in the solution directory.  When the code compiles/builds, if your test project for example references your main project one level above it, then the main project will reference the build output in the `\bin\` of the test project as well as its own build output in its `\bin\` directory at its level.  This causes a duplicate output error, `CS0579` (or something like that).  Here's the links to the issue:
 
 https://stackoverflow.com/questions/10311347/duplicate-assemblyversion-attribute
