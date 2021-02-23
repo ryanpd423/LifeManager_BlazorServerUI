@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LifeManager_BlazorServerUI.Services;
+using LifeManager_BlazorServerUI.Wrappers;
 
 namespace LifeManager_BlazorServerUI.ViewModels
 {
@@ -21,11 +21,14 @@ namespace LifeManager_BlazorServerUI.ViewModels
     public class CarWizardViewModel : ICarWizardViewModel
     {
         private readonly IPropertyService _propertyService;
+        private readonly IHttpClientWrapper _httpClientWrapper;
 
-        public CarWizardViewModel(IPropertyService propertyService)
+        public CarWizardViewModel(IPropertyService propertyService,
+            IHttpClientWrapper httpClientWrapper)
         {
             // dependencies above this line
             _propertyService = propertyService;
+            _httpClientWrapper = httpClientWrapper;
             InitializeViewModel().GetAwaiter().GetResult();
         }
 
@@ -68,8 +71,10 @@ namespace LifeManager_BlazorServerUI.ViewModels
 
         public async Task HandleSubmit()
         {
-            await Task.Delay(0);
+            //await Task.Delay(0);
             System.Diagnostics.Debug.WriteLine("✅ You just submitted your form! 🤙");
+            var foo = await _httpClientWrapper.GetAsync("https://localhost:3001/weatherforecast");
+            System.Diagnostics.Debug.WriteLine(foo);
         }
 
         public async Task HandleVehicleSelect(Car selectedVehicle)
