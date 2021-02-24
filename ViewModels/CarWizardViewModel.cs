@@ -71,10 +71,10 @@ namespace LifeManager_BlazorServerUI.ViewModels
 
         public async Task HandleSubmit()
         {
-            //await Task.Delay(0);
+            await Task.Delay(0);
             System.Diagnostics.Debug.WriteLine("✅ You just submitted your form! 🤙");
-            var foo = await _httpClientWrapper.GetAsync("https://localhost:3001/weatherforecast");
-            System.Diagnostics.Debug.WriteLine(foo);
+            //var foo = await _httpClientWrapper.GetAsync("https://localhost:3001/weatherforecast");
+            //System.Diagnostics.Debug.WriteLine(foo);
         }
 
         public async Task HandleVehicleSelect(Car selectedVehicle)
