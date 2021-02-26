@@ -30,6 +30,10 @@
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 .grid-container__page {
     display: grid;
     height: 100vh;
