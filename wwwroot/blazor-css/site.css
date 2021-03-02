@@ -221,6 +221,7 @@ a {
     background: #6300EA;
     margin: auto;
     padding: 20px;
+    height: 260px;
 }
 
 .car-wizard_form-area__form {
@@ -234,15 +235,34 @@ a {
     color: #FFFFFF;
 }
 
+.car-wizard__car_selection_area__add-car-button {
+    background: #000;
+    color: #FFF;
+    box-shadow: 2px 2px 4px #000000, -0.5px -0.5px 2px #757575;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+    font-size: 25px;
+    border: 3px solid #FFFFFF;
+}
+
+.car-wizard__car_selection_area__add-car-button:hover {
+    transform: scale(1.1, 1.1);
+    cursor: pointer;
+    background: #757575;
+}
+
 .car-wizard__car_selection_area__list__item {
-    width: 250px;
+    width: 300px;
     margin: 35px;
     background: #757575;
     border-radius: 3px;
+    border: 3px solid #FFFFFF;
     box-shadow: 2px 2px 4px #000000, -0.5px -0.5px 2px #757575;
     text-align: center;
     align-items: center;
-    font-size: 45px;
+    font-size: 35px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 

@@ -41,9 +41,14 @@
                             {
                                 <div class="car-wizard__car_selection_area__list__item"
                                      @onclick="(e => CarWizardViewModel.HandleVehicleSelect(Car))">
-                                    @Car.Make
+                                    @Car.Make.ToUpper()
                                 </div>
                             }
+                        </div>
+                        <div class="car-wizard__car_selection_area__add-car-button">
+                            <div class="car-wizard__car_selection_area__add-car-button-title">
+                                ADD CAR
+                            </div>
                         </div>
                     </div>
                     break;

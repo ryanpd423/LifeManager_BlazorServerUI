@@ -42,6 +42,19 @@ namespace ComponentUI_Tests
 
             // Assert
         }
+
+        [Fact]
+        public void it_should_display_a_button_to_launch_add_vehicle_button_in_form_area()
+        {
+            // Act
+            var page = _carWizardComponentFixture.bUnitTestContext
+                .RenderComponent<CarWizardComponent>();
+            var result = page.FindAll("div")
+                .Where(x => x.ClassName == "car-wizard__car_selection_area__add-car-button");
+
+            // Assert
+            Assert.Single(result);
+        }
     }
 
     public class CarWizardComponentFixture : TestContext
