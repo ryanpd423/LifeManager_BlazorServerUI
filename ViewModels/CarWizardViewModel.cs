@@ -14,8 +14,10 @@ namespace LifeManager_BlazorServerUI.ViewModels
         Task GoToPreviousStep();
         Task HandleSubmit();
         List<Car> Cars { get; set; }
-        public Car SelectedVehicle { get; set; }
+        Car SelectedVehicle { get; set; }
         Task HandleVehicleSelect(Car selectedVehicle);
+        bool AddCarModalIsVisible { get; set; }
+        Task AddCarModalHandler();
     }
 
     public class CarWizardViewModel : ICarWizardViewModel
@@ -44,12 +46,14 @@ namespace LifeManager_BlazorServerUI.ViewModels
             ActiveStep = WizardSteps.FirstOrDefault(x => x.StepNumber == 1);
             Cars = new List<Car>(); // Was breaking if I didn't init this prop first...Weird...
             Cars = await _propertyService.GetCars();
+            AddCarModalIsVisible = false;
         }
 
         public List<WizardStep> WizardSteps { get; set; }
         public WizardStep ActiveStep { get; set; }
         public List<Car> Cars { get; set; }
         public Car SelectedVehicle { get; set; }
+        public bool AddCarModalIsVisible { get; set; }
 
         public async Task GoToNextStep()
         {
@@ -82,6 +86,12 @@ namespace LifeManager_BlazorServerUI.ViewModels
             await Task.Delay(0);
             SelectedVehicle = selectedVehicle;
             System.Diagnostics.Debug.WriteLine($"✅ You just selected the {selectedVehicle.Make} 🚗");
+        }
+
+        public async Task AddCarModalHandler()
+        {
+            await Task.Delay(0);
+            AddCarModalIsVisible = !AddCarModalIsVisible;
         }
     }
 }

@@ -26,13 +26,14 @@ namespace ComponentUI_Tests
             // Act
             var page = _carWizardComponentFixture.bUnitTestContext
                 .RenderComponent<CarWizardComponent>();
-            var result = page.FindAll("div").Where(x => x.ClassName.Contains("card-wizard__progress-area__progress-item"));
+            var result = page.FindAll("div")
+                .Where(x => x.ClassName.Contains("card-wizard__progress-area__progress-item"));
 
             // Assert
             Assert.Equal(4, result.Count());
         }
 
-        [Fact]
+        [Fact(Skip = "Need to figure out how to verify mockViewModel property values")]
         public void it_should_update_the_ActiveWizardStep_when_the_next_btn_is_clicked()
         {
             // Act
@@ -40,7 +41,9 @@ namespace ComponentUI_Tests
                 .RenderComponent<CarWizardComponent>();
             page.Find(".wizard-next-button").Click();
 
+            // TODO: figure out how to verify mockViewModel property values
             // Assert
+            //_carWizardComponentFixture.mockCarWizardViewModel.Verify(x )
         }
 
         [Fact]
@@ -55,13 +58,27 @@ namespace ComponentUI_Tests
             // Assert
             Assert.Single(result);
         }
+
+        [Fact]
+        public void it_should_display_a_modal_when_the_add_vehicle_button_is_clicked()
+        {
+            // Act
+            var page = _carWizardComponentFixture.bUnitTestContext
+                .RenderComponent<CarWizardComponent>();
+            var result = page.FindAll("div")
+                .Where(x => x.ClassName == "add-car-button__modal");
+
+            // Assert
+            Assert.Single(result);
+        }
     }
 
     public class CarWizardComponentFixture : TestContext
     {
+        // Public Mocking Interface Properties
+        public Mock<ICarWizardViewModel> mockCarWizardViewModel;
 
         // Private Property Mocked Injected Dependencies
-        private readonly Mock<ICarWizardViewModel> _mockCarWizardViewModel;
         private readonly List<WizardStep> wizardSteps;
         private readonly WizardStep activeStep;
         private readonly List<Car> cars;
@@ -73,13 +90,13 @@ namespace ComponentUI_Tests
         {
             wizardSteps = WizardSteps_Setup_Test_Helper();
             cars = Cars_Setup_Test_Helper();
-            _mockCarWizardViewModel = new Mock<ICarWizardViewModel>();
-            _mockCarWizardViewModel.Setup(x => x.WizardSteps).Returns(wizardSteps);
-            _mockCarWizardViewModel.Setup(x => x.ActiveStep)
+            mockCarWizardViewModel = new Mock<ICarWizardViewModel>();
+            mockCarWizardViewModel.Setup(x => x.WizardSteps).Returns(wizardSteps);
+            mockCarWizardViewModel.Setup(x => x.ActiveStep)
                 .Returns(wizardSteps.FirstOrDefault());
-            _mockCarWizardViewModel.Setup(x => x.Cars).Returns(cars);
+            mockCarWizardViewModel.Setup(x => x.Cars).Returns(cars);
             bUnitTestContext = new TestContext();
-            bUnitTestContext.Services.AddSingleton(_mockCarWizardViewModel.Object);
+            bUnitTestContext.Services.AddSingleton(mockCarWizardViewModel.Object);
         }
 
         private List<Car> Cars_Setup_Test_Helper()

@@ -33,8 +33,8 @@
                 case 1:
                     <div class="car-wizard__car_selection_area">
                         @* TODO: Make this overflow hidden
-                            with a draggable scroll feature.
-                            Will prob need JSInterop for it.
+                    with a draggable scroll feature.
+                    Will prob need JSInterop for it.
                         *@
                         <div class="car-wizard__car_selection_area__list">
                             @foreach (var Car in CarWizardViewModel.Cars)
@@ -45,12 +45,25 @@
                                 </div>
                             }
                         </div>
-                        <div class="car-wizard__car_selection_area__add-car-button">
+                        <div class="car-wizard__car_selection_area__add-car-button"
+                             @onclick="(e => CarWizardViewModel.AddCarModalHandler())">
                             <div class="car-wizard__car_selection_area__add-car-button-title">
                                 ADD CAR
                             </div>
                         </div>
                     </div>
+                    if (CarWizardViewModel.AddCarModalIsVisible)
+                    {
+                        <div class="add-car-button__modal">
+                            <div class="add-car-button__modal-content">
+                                <span class=""
+                                      @onclick="(e =>
+                                                CarWizardViewModel
+                                                .AddCarModalHandler())">&times;</span>
+                                The Add Car Button Modal Window
+                            </div>
+                        </div>
+                    }
                     break;
                 case 2:
                     <div>
