@@ -1,8 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using LifeManager_BlazorServerUI.Services;
+using LifeManager_BlazorServerUI.Models;
 using LifeManager_BlazorServerUI.Wrappers;
+using Newtonsoft.Json;
 
 namespace LifeManager_BlazorServerUI.ViewModels
 {
@@ -18,25 +25,29 @@ namespace LifeManager_BlazorServerUI.ViewModels
         Task HandleVehicleSelect(Car selectedVehicle);
         bool AddCarModalIsVisible { get; set; }
         Task AddCarModalHandler();
+        Task OpenModal();
+        Task CloseModal();
+        Task<List<Car>> GetCars();
     }
 
     public class CarWizardViewModel : ICarWizardViewModel
     {
         private readonly IPropertyService _propertyService;
-        private readonly IHttpClientWrapper _httpClientWrapper;
+        private readonly HttpClient _http;
 
         public CarWizardViewModel(IPropertyService propertyService,
-            IHttpClientWrapper httpClientWrapper)
+            HttpClient http)
         {
             // dependencies above this line
             _propertyService = propertyService;
-            _httpClientWrapper = httpClientWrapper;
             InitializeViewModel().GetAwaiter().GetResult();
         }
 
+        // TODO: Figure out why I can't init Cars via http in this ViewModel
         public async Task InitializeViewModel()
         {
             await Task.Delay(0);
+            //Cars = await GetCars();
             // initialize here
             WizardSteps = new List<WizardStep>();
             WizardSteps.Add(new WizardStep() { Id = 1, StepName = "Select Vehicle", StepNumber = 1 });
@@ -45,7 +56,6 @@ namespace LifeManager_BlazorServerUI.ViewModels
             WizardSteps.Add(new WizardStep() { Id = 4, StepName = "Step 4", StepNumber = 4 });
             ActiveStep = WizardSteps.FirstOrDefault(x => x.StepNumber == 1);
             Cars = new List<Car>(); // Was breaking if I didn't init this prop first...Weird...
-            Cars = await _propertyService.GetCars();
             AddCarModalIsVisible = false;
         }
 
@@ -73,12 +83,15 @@ namespace LifeManager_BlazorServerUI.ViewModels
             }
         }
 
+        // TODO: figure this out here before you use the Property Service for GET/POST
         public async Task HandleSubmit()
         {
             await Task.Delay(0);
             System.Diagnostics.Debug.WriteLine("✅ You just submitted your form! 🤙");
-            //var foo = await _httpClientWrapper.GetAsync("https://localhost:3001/weatherforecast");
-            //System.Diagnostics.Debug.WriteLine(foo);
+            // This works here but not when the view is initializing...
+            //var httpClient = new HttpClient();
+            //var Cars = await httpClient.GetFromJsonAsync<List<Car>>("https://localhost:3001/propertyservice");
+            //var foo = Cars;
         }
 
         public async Task HandleVehicleSelect(Car selectedVehicle)
@@ -92,6 +105,23 @@ namespace LifeManager_BlazorServerUI.ViewModels
         {
             await Task.Delay(0);
             AddCarModalIsVisible = !AddCarModalIsVisible;
+        }
+
+        public async Task OpenModal()
+        {
+            await Task.Delay(0);
+            AddCarModalIsVisible = true;
+        }
+
+        public async Task CloseModal()
+        {
+            await Task.Delay(0);
+            AddCarModalIsVisible = false;
+        }
+
+        public async Task<List<Car>> GetCars()
+        {
+            return await _propertyService.GetCars();
         }
     }
 }

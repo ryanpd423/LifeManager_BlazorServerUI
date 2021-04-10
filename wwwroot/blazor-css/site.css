@@ -44,7 +44,7 @@ a {
 
 .sidebar {
     grid-area: sidebar;
-    background: #ffb300; /* material deep purple - primary */
+    background: #ffb300; /* material goldenrod - primary */
 }
 
 .navbar {
@@ -107,7 +107,7 @@ a {
 .cards__grid-item {
     text-align: center;
     background-color: #80808052;
-    box-shadow: 2px 2px 4px #000000, 0.5px 0.5px 4px #000000;
+    box-shadow: 2px 2px 4px #636363, 0.5px 0.5px 4px #000000;
     cursor: pointer;
     height: 175px;
     border-radius: 5px;
@@ -300,6 +300,9 @@ a {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    height: 350px;
+    border-radius: 5px;
+    border: 3px solid #ffb300;
 }
 
 .car-wizard__form-area__button-group {
@@ -311,6 +314,16 @@ a {
     font-size: 35px;
     padding: 20px;
     margin: auto;
+}
+
+.modal-close {
+    float: right;
+    font-size: 40px;
+}
+
+.modal-close:hover {
+    cursor: pointer;
+    color: #b3b3b3
 }
 
 .wizard-prev-button {

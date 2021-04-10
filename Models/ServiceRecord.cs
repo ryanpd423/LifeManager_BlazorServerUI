@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LifeManager_BlazorServerUI.Services
+namespace LifeManager_BlazorServerUI.Models
 {
     public class ServiceRecord
     {

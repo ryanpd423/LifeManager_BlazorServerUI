@@ -25,8 +25,9 @@ namespace LifeManager_BlazorServerUI
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<ICarWizardViewModel, CarWizardViewModel>();
-            services.AddScoped<IPropertyService, PropertyService>();
-            services.AddScoped<IHttpClientWrapper, HttpClientWrapper>();
+            services.AddSingleton<IPropertyService, PropertyService>();
+            services.AddSingleton<IHttpClientWrapper, HttpClientWrapper>();
+            services.AddHttpClient();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,7 +46,6 @@ namespace LifeManager_BlazorServerUI
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

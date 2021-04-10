@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using LifeManager_BlazorServerUI.Services;
 
-namespace LifeManager_BlazorServerUI.Services
+namespace LifeManager_BlazorServerUI.Models
 {
     public class Car
     {

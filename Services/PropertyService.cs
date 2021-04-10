@@ -1,6 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Text.Json;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
+using LifeManager_BlazorServerUI.Wrappers;
+using Newtonsoft.Json;
+using LifeManager_BlazorServerUI.ViewModels;
+using LifeManager_BlazorServerUI.Models;
 
 namespace LifeManager_BlazorServerUI.Services
 {
@@ -11,36 +18,31 @@ namespace LifeManager_BlazorServerUI.Services
 
     public class PropertyService : IPropertyService
     {
-        public PropertyService()
+        private readonly IHttpClientWrapper _httpClientWrapper;
+
+        public PropertyService(IHttpClientWrapper httpClientWrapper)
         {
+            _httpClientWrapper = httpClientWrapper;
         }
 
         public async Task<List<Car>> GetCars()
         {
-            //Trick the compiler to "wait 0 seconds";
-            //Reason: Made method async before hooking up
-            //to actual internet service
-            await Task.Delay(0);
-            return new List<Car>()
+            //await Task.Delay(0);
+            try
             {
-                new Car()
-                {
-                    Id = 1,
-                    Type = CarType.SUV,
-                    Make = "Chevrolet",
-                    Model = "Tahoe",
-                    Year = 2018
-                },
-                new Car()
-                {
-                    Id = 2,
-                    Type = CarType.SUV,
-                    Make = "Kia",
-                    Model = "Sorento",
-                    Year = 2016
-
-                }
-            };
+                await Task.Delay(0);
+                var httpClient = new HttpClient();
+                // Cars gets hydrated when it gets called from the SubmitHander in the ViewModel
+                // Still not sure why it isn't working here...maybe something to do
+                // with the initialization process?
+                var Cars = await httpClient.GetFromJsonAsync<List<Car>>("https://localhost:3001/propertyservice");
+                return Cars;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Shit!");
+                throw;
+            }
         }
     }
 }

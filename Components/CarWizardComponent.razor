@@ -1,5 +1,7 @@
 ﻿@page "/car"
 @inject ICarWizardViewModel CarWizardViewModel
+@inject HttpClient Http
+@using LifeManager_BlazorServerUI.Models
 
 <div class="car-wizard__grid-container">
     <div class="car-wizard__progress-area">
@@ -33,11 +35,17 @@
                 case 1:
                     <div class="car-wizard__car_selection_area">
                         @* TODO: Make this overflow hidden
-                    with a draggable scroll feature.
-                    Will prob need JSInterop for it.
+                            with a draggable scroll feature.
+                            Will prob need JSInterop for it.
                         *@
                         <div class="car-wizard__car_selection_area__list">
-                            @foreach (var Car in CarWizardViewModel.Cars)
+                            @*@foreach (var Car in CarWizardViewModel.Cars)
+                                this is what I WANT to have but I can't get the
+                                service layer to init the Cars property from the View
+                                initialization sequence so instead I am trying to just do it directly
+                                from the view which is what I have foreach referencing the local
+                                Cars prop below and not the ViewModel's Cars prop*@
+                            @foreach (var Car in Cars)
                             {
                                 <div class="car-wizard__car_selection_area__list__item"
                                      @onclick="(e => CarWizardViewModel.HandleVehicleSelect(Car))">
@@ -46,7 +54,7 @@
                             }
                         </div>
                         <div class="car-wizard__car_selection_area__add-car-button"
-                             @onclick="(e => CarWizardViewModel.AddCarModalHandler())">
+                             @onclick="(e => CarWizardViewModel.OpenModal())">
                             <div class="car-wizard__car_selection_area__add-car-button-title">
                                 ADD CAR
                             </div>
@@ -56,10 +64,10 @@
                     {
                         <div class="add-car-button__modal">
                             <div class="add-car-button__modal-content">
-                                <span class=""
+                                <span class="modal-close"
                                       @onclick="(e =>
                                                 CarWizardViewModel
-                                                .AddCarModalHandler())">&times;</span>
+                                                .CloseModal())">&times;</span>
                                 The Add Car Button Modal Window
                             </div>
                         </div>
@@ -117,3 +125,18 @@
     </div>
 </div>
 
+@code {
+
+    List<Car> Cars = new List<Car>();
+
+    async Task LoadCars()
+    {
+        Cars = await CarWizardViewModel.GetCars();
+        await InvokeAsync(StateHasChanged);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadCars();
+    }
+}
