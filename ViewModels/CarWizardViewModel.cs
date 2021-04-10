@@ -47,7 +47,7 @@ namespace LifeManager_BlazorServerUI.ViewModels
         public async Task InitializeViewModel()
         {
             await Task.Delay(0);
-            //Cars = await GetCars();
+            //Cars = await GetCars(); //TODO: get this to work and have the View use it
             // initialize here
             WizardSteps = new List<WizardStep>();
             WizardSteps.Add(new WizardStep() { Id = 1, StepName = "Select Vehicle", StepNumber = 1 });

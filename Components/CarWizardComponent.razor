@@ -132,7 +132,7 @@
     async Task LoadCars()
     {
         Cars = await CarWizardViewModel.GetCars();
-        await InvokeAsync(StateHasChanged);
+        await InvokeAsync(StateHasChanged); //maybe doing something like this in ViewModel will allow me to hydrate Cars via the API in the ViewModel initialization sequence...?
     }
 
     protected override async Task OnInitializedAsync()
